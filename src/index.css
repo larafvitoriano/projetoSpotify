@@ -12,10 +12,8 @@
   --green-950: hsl(141deg 75% 5%);
   --green-1000: hsl(141deg 75% 2.5%);
   --green-1000-25: hsl(141deg 75% 2.5% / 25%);
-
   --transition-duration: 200ms;
   --transition-function: ease;
-
   --border-radius-s: 5px;
   --border-radius-m: 10px;
   --border-radius-l: 15px;
@@ -87,6 +85,12 @@ img {
   opacity: 0.8;
 }
 
+@media (max-width: 480px) {
+  .main {
+    padding: 12px 16px;
+  }
+}
+
 /* ItemList */
 
 .item-list {
@@ -105,6 +109,12 @@ img {
 .item-list-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(172px, 1fr))
+}
+
+@media (max-width: 480px) {
+  .item-list {
+    gap: 20px;
+  }
 }
 
 /* SingleItem */
@@ -189,4 +199,214 @@ img {
   -webkit-box-orient: vertical;
   box-orient: vertical;
   overflow: hidden;
+}
+
+@media (max-width: 480px) {
+  .single-item-icon {
+    right: 15px;
+    bottom: 15px;
+  }
+
+  .single-item {
+    padding: 0;
+  }
+
+  .single-item-text {
+    gap: 0;
+  }
+}
+
+/* Artist */
+
+.artist {
+  border-radius: var(--border-radius-l);
+  margin: 0 10px 10px;
+  overflow: hidden;
+}
+
+.artist-header {
+  --_shade: hsl(0deg 0% 0% / 25%);
+  display: flex;
+  align-items: end;
+  padding: 25px;
+  height: 40svh;
+  background-size: cover;
+  background-position-y: 20%;
+  background-image: linear-gradient(to bottom, var(--_shade), var(--_shade)),
+    url(https://i.scdn.co/image/ab67618600001016909a162796dbc3629a1fadeb);
+}
+
+.artist-title {
+  font-size: 96px;
+}
+
+.artist-body {
+  padding: 39px 25px;
+  background-image: linear-gradient(to bottom,
+      var(--green-900),
+      var(--green-950));
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+@media (max-width: 1280px) {
+  .artist-title {
+    font-size: 7.5vw;
+    line-height: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .artist-title {
+    font-size: 36px;
+  }
+
+  .artist-header {
+    padding: 16px;
+  }
+
+  .artist-body {
+    padding: 25px 16px;
+    gap: 16px;
+  }
+}
+
+/* SongList */
+
+.song-list-see-more {
+  font-weight: 700;
+  margin-left: 25px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.song-list-see-more:hover {
+  text-decoration: underline;
+}
+
+/* SongItem */
+
+.song-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 25px;
+  border-radius: var(--border-radius-s);
+  transition: background-color var(--transition-function) var(--transition-duration);
+  gap: 15px;
+}
+
+.song-item:hover {
+  background-color: var(--green-800);
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.song-item-name:hover {
+  text-decoration: underline;
+}
+
+.song-item-image {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--border-radius-s);
+}
+
+.song-item-album {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.song-item-number-album {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+@media (max-width: 480px) {
+  .song-item {
+    padding: 10px 16px;
+  }
+}
+
+/* Song */
+
+.song {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  flex: 1;
+}
+
+.song-container {
+  margin: 0 20px;
+  border-top-right-radius: 15px;
+  background-image: linear-gradient(to bottom,
+      var(--green-800),
+      var(--green-950));
+  border-top-left-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+}
+
+.song-image-container {
+  box-shadow: 0 0 25px 10px var(--green-1000-25);
+}
+
+.song-bar {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  place-items: center;
+  background-color: black;
+  color: white;
+  padding: 16px 25px;
+  gap: 15px;
+}
+
+.song-artist-image {
+  justify-self: start;
+  border-radius: var(--border-radius-s);
+  overflow: hidden;
+}
+
+.song-name {
+  font-size: 19px;
+  font-weight: 700;
+}
+
+@media (max-width: 1280px) {
+  .song-name {
+    font-size: 16px;
+  }
+
+  .song-bar {
+    grid-template-columns: auto 2fr 3fr;
+  }
+
+  .song-info {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: start;
+  }
+}
+
+@media (max-width: 800px) {
+  .song-bar {
+    grid-template-columns: auto 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .song-artist-image {
+    width: 50px;
+    height: 50px;
+  }
+
+  .song-info,
+  .song-name {
+    font-size: 13px;
+  }
 }
